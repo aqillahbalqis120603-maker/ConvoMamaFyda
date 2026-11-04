@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konvokesyen Taska Mama Fyda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PAGE 1: Halaman Sampul / Kad Ucapan -->
+  <div id="page1" class="page active">
+    <div class="card-cover" onclick="goToPage2()">
+      <h1>Majlis Konvokesyen</h1>
+      <div class="logo-badge">☀️ Taska Mama Fyda 🌈</div>
+      <div class="envelope">🎓 Sentuh untuk buka kamera!</div>
+      <h2>Play to Learn</h2>
+      <p>Sesi 2026</p>
+      <div class="music-disc">🎵 Klik untuk mainkan lagu ceria</div>
+    </div>
+  </div>
+
+  <!-- PAGE 2: Halaman Utama & Borang Nama Murid -->
+  <div id="page2" class="page">
+    <div class="main-menu">
+      <h2>Taska Mama Fyda</h2>
+      <p class="pantun">
+        Hari ini hari bahagia,<br>
+        Baju graduasi bergaya indah;<br>
+        Senyuman manis penyeri dunia,<br>
+        Kenangan manis dibawa mudah!
+      </p>
+
+      <div class="input-group">
+        <label for="studentName">Nama Murid / Ibu Bapa</label>
+        <input type="text" id="studentName" placeholder="Masukkan nama di sini">
+      </div>
+
+      <button class="btn-primary" onclick="goToPage3()">📷 AMBIL GAMBAR</button>
+      <button class="btn-outline" onclick="goToPage4()">LIHAT ALBUM KENANGAN</button>
+    </div>
+  </div>
+
+  <!-- PAGE 3: Skrin Kamera & Bingkai Comel -->
+  <div id="page3" class="page">
+    <div class="camera-screen">
+      <div class="top-bar">
+        <button class="close-btn" onclick="goToPage2()">✕</button>
+        <h3>Konvo Mama Fyda</h3>
+      </div>
+
+      <div class="camera-wrapper">
+        <video id="webcam" autoplay playsinline></video>
+        <img id="frameOverlay" class="frame-overlay" src="assets/frames/convo.png" alt="Frame">
+        <canvas id="photoCanvas" style="display:none;"></canvas>
+      </div>
+
+      <!-- Pilihan Bingkai (Frames) -->
+      <div class="frame-options">
+        <button onclick="changeFrame('convo.png')">Graduasi</button>
+        <button onclick="changeFrame('rainbow.png')">Pelangi</button>
+        <button onclick="changeFrame('star.png')">Bintang</button>
+      </div>
+
+      <!-- Shutter Button -->
+      <div class="shutter-container">
+        <button id="snapBtn" class="shutter-btn"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 4: Album Kenangan Murid -->
+  <div id="page4" class="page">
+    <div class="album-screen">
+      <div class="top-bar">
+        <button class="close-btn" onclick="goToPage2()">‹</button>
+        <div>
+          <h2>Album Kenangan</h2>
+          <p class="sub-title">Momen Indah Konvokesyen</p>
+        </div>
+        <button class="close-btn" onclick="loadAlbum()">↻</button>
+      </div>
+
+      <div id="albumContainer" class="album-container">
+        <div id="emptyState" class="empty-state">
+          <div class="envelope-icon">🎈</div>
+          <p>Memuat turun gambar kenangan...</p>
+        </div>
+      </div>
+
+      <div class="album-footer">
+        <button class="btn-primary" onclick="goToPage3()">📷 AMBIL GAMBAR LAGI</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lagu Latar Belakang Ceria -->
+  <audio id="bgMusic" src="assets/audio/song.mp3" loop></audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
