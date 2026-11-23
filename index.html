@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ms">
 <head>
@@ -9,14 +10,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body data-page="page1">
 
-  <!-- Hiasan latar: matahari, awan, bukit & rumah (dijana oleh app.js) -->
+  <!-- Hiasan latar -->
   <div id="deco" class="deco" aria-hidden="true"></div>
 
-  <!-- Butang lagu ceria -->
+  <!-- Butang lagu -->
   <button id="musicBtn" class="music-btn" onclick="toggleMusic()" aria-label="Mainkan atau henti lagu">
     <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M9 18V6l10-2v12"/>
@@ -28,7 +31,9 @@
 
   <!-- PAGE 1: Halaman Sampul -->
   <section id="page1" class="page active" onclick="goToPage2()">
+
     <div class="hero">
+
       <h1 class="title">
         <span class="rainbow">Majlis</span>
         <span class="rainbow">Konvokesyen</span>
@@ -38,22 +43,199 @@
         <img class="logo-img" src="assets/logo-taska.jpg" alt="Logo Taska Mama Fyda" onerror="logoFallback(this)">
       </div>
 
-      <div class="ribbon"><span>Sesi 2026</span></div>
+      <div class="ribbon">
+        <span>Sesi 2026</span>
+      </div>
 
-      <button class="btn-big" onclick="event.stopPropagation(); goToPage2()">🎓 Sentuh untuk mula</button>
-      <p class="hint">🎵 Tekan butang ♪ di penjuru untuk lagu ceria</p>
+      <!-- TENTATIF MAJLIS -->
+      <div class="event-section" onclick="event.stopPropagation()">
+
+        <div class="event-heading">
+          <span class="event-mascot">🐻</span>
+
+          <div>
+            <h2>Atur Cara Majlis</h2>
+            <p>Jom raikan hari istimewa kita! 🎓</p>
+          </div>
+
+          <span class="event-mascot">🌈</span>
+        </div>
+
+        <div class="event-info">
+          <span>📅</span>
+          <strong>28 November 2026</strong>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <span>9:00</span>
+            <p>Parents' Registration</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>9:30</span>
+            <p>Doa Recitation</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>9:35</span>
+            <p>TMF Intro & TC Mama's Speech</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>9:45</span>
+            <p>Montage</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>10:00</span>
+            <p>Opening Speech</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>10:10</span>
+            <p>Circle Time Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>10:20</span>
+            <p>TMF Pipit Parent's Speech</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>10:30</span>
+            <p>2 Mawar Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>10:40</span>
+            <p>2 Matahari Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>10:50</span>
+            <p>TMF Bangau Parent's Speech</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>11:00</span>
+            <p>3 Rose Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>11:10</span>
+            <p>3 Cempaka Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>11:20</span>
+            <p>4 Lily Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>11:30</span>
+            <p>4 Sakura Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>11:40</span>
+            <p>TMF Pipit Special Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>11:50</span>
+            <p>TMF Bangau Special Performance</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>12:00</span>
+            <p>Gift & Photography Session</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>12:15</span>
+            <p>Doa Recitation</p>
+          </div>
+
+        </div>
+
+        <!-- LOKASI MAJLIS -->
+        <div class="event-location">
+
+          <div class="location-heading">
+            <span>📍</span>
+            <h3>Lokasi Majlis</h3>
+          </div>
+
+          <div class="location-mascot">
+            🏫 🐰 🎈
+          </div>
+
+          <p class="location-name">
+            Perpustakaan Awam Banting (PPAS)
+          </p>
+
+          <p class="location-address">
+            Jalan Persiaran Majlis, Taman Budiman,<br>
+            42700 Banting, Selangor
+          </p>
+
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps?q=Perpustakaan%20Awam%20Selangor%20Daerah%20Kuala%20Langat%2C%20Banting&output=embed"
+              width="100%"
+              height="200"
+              style="border:0;"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Peta Perpustakaan Awam Banting">
+            </iframe>
+          </div>
+
+          <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=Perpustakaan+Awam+Selangor+Daerah+Kuala+Langat+Banting"
+            target="_blank"
+            rel="noopener">
+            🗺️ Buka Google Maps
+          </a>
+
+        </div>
+
+        <div class="event-footer">
+          🎉 Jumpa anda di sana! 🎉
+        </div>
+
+      </div>
+
+      <!-- BUTANG MULA -->
+      <button class="btn-big" onclick="event.stopPropagation(); goToPage2()">
+        🎓 Sentuh untuk mula
+      </button>
+
+      <p class="hint">
+        🎵 Tekan butang ♪ di penjuru untuk lagu ceria
+      </p>
+
     </div>
+
   </section>
 
   <!-- PAGE 2: Menu Utama & Nama Murid -->
   <section id="page2" class="page">
+
     <div class="card menu">
+
       <div class="logo-wrap sm">
         <img class="logo-img" src="assets/logo-taska.jpg" alt="Logo Taska Mama Fyda" onerror="logoFallback(this)">
       </div>
 
       <h2 class="wordmark">
-        <span class="w-g">Taska</span> <span class="w-r">Mama</span> <span class="w-b">Fyda</span>
+        <span class="w-g">Taska</span>
+        <span class="w-r">Mama</span>
+        <span class="w-b">Fyda</span>
       </h2>
 
       <div class="pantun-box">
@@ -70,20 +252,38 @@
         <input type="text" id="studentName" placeholder="Taip nama di sini" maxlength="30" autocomplete="off">
       </div>
 
-      <button class="btn-primary" onclick="goToPage3()">📷 AMBIL GAMBAR</button>
-      <button class="btn-secondary" onclick="goToPage4()">🖼️ LIHAT ALBUM KENANGAN</button>
+      <button class="btn-primary" onclick="goToPage3()">
+        📷 AMBIL GAMBAR
+      </button>
+
+      <button class="btn-secondary" onclick="goToPage4()">
+        🖼️ LIHAT ALBUM KENANGAN
+      </button>
+
     </div>
+
   </section>
 
   <!-- PAGE 3: Kamera & Bingkai Comel -->
   <section id="page3" class="page">
+
     <div class="camera-screen">
+
       <div class="top-bar">
-        <button class="icon-btn" onclick="goToPage2()" aria-label="Tutup">✕</button>
-        <h3 class="top-title">Konvo Mama Fyda</h3>
-        <button class="icon-btn" onclick="flipCamera()" aria-label="Pusing kamera">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>
+
+        <button class="icon-btn" onclick="goToPage2()" aria-label="Tutup">
+          ✕
         </button>
+
+        <h3 class="top-title">Konvo Mama Fyda</h3>
+
+        <button class="icon-btn" onclick="flipCamera()" aria-label="Pusing kamera">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 12a8 8 0 1 1-2.6-5.9"/>
+            <path d="M20 4v5h-5"/>
+          </svg>
+        </button>
+
       </div>
 
       <div class="camera-wrapper">
@@ -102,31 +302,51 @@
 
       <div class="shutter-container">
         <button id="snapBtn" class="shutter-btn" aria-label="Ambil gambar">
-          <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/>
+            <circle cx="12" cy="13" r="3.5"/>
+          </svg>
         </button>
       </div>
+
       <p id="uploadStatus" class="upload-status"></p>
+
     </div>
+
   </section>
 
   <!-- PAGE 4: Album Kenangan -->
   <section id="page4" class="page">
+
     <div class="album-screen">
+
       <div class="top-bar album-head">
-        <button class="icon-btn" onclick="goToPage2()" aria-label="Kembali">‹</button>
+
+        <button class="icon-btn" onclick="goToPage2()" aria-label="Kembali">
+          ‹
+        </button>
+
         <div>
           <h2 class="album-title">Album Kenangan</h2>
           <p class="sub-title">Momen Indah Konvokesyen</p>
         </div>
-        <button class="icon-btn" onclick="loadAlbum()" aria-label="Muat semula">↻</button>
+
+        <button class="icon-btn" onclick="loadAlbum()" aria-label="Muat semula">
+          ↻
+        </button>
+
       </div>
 
       <div id="albumContainer" class="album-container"></div>
 
       <div class="album-footer">
-        <button class="btn-primary" onclick="goToPage3()">📷 AMBIL GAMBAR LAGI</button>
+        <button class="btn-primary" onclick="goToPage3()">
+          📷 AMBIL GAMBAR LAGI
+        </button>
       </div>
+
     </div>
+
   </section>
 
   <div id="flash"></div>
@@ -136,5 +356,6 @@
   <audio id="bgMusic" src="assets/audio/song.mp3" loop></audio>
 
   <script src="app.js"></script>
+
 </body>
 </html>
