@@ -12,25 +12,473 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    @keyframes floatBounce {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+
+    @keyframes wigglePop {
+      0%, 100% { transform: scale(1) rotate(-2deg); }
+      50% { transform: scale(1.07) rotate(2deg); }
+    }
+
+    @keyframes starTwinkle {
+      0%, 100% { transform: scale(.8) rotate(0); opacity: .6; }
+      50% { transform: scale(1.3) rotate(25deg); opacity: 1; }
+    }
+
+    @keyframes heroShine {
+      0% { transform: translateX(-150%) skewX(-22deg); }
+      60%, 100% { transform: translateX(250%) skewX(-22deg); }
+    }
+
+    @keyframes balloonFloat {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-24px) rotate(5deg); }
+    }
+
+    @keyframes flyAcross {
+      0% { transform: translateX(-100px) translateY(0); }
+      50% { transform: translateX(50vw) translateY(-25px); }
+      100% { transform: translateX(110vw) translateY(0); }
+    }
+
+    @keyframes mascotDance {
+      0%, 100% { transform: rotate(-8deg) translateY(0); }
+      50% { transform: rotate(8deg) translateY(-9px); }
+    }
+
+    @keyframes rainbowPulse {
+      0%, 100% { filter: drop-shadow(0 0 3px #fff); }
+      50% { filter: drop-shadow(0 0 12px #ffcf40); }
+    }
+
+    @keyframes graduation {
+      0%, 100% { transform: translateY(0) rotate(-10deg); }
+      50% { transform: translateY(-12px) rotate(10deg); }
+    }
+
+    .magic-decorations {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .magic-item {
+      position: absolute;
+      font-size: 27px;
+      animation: floatBounce 4s ease-in-out infinite;
+      filter: drop-shadow(0 3px 3px rgba(0,0,0,.12));
+    }
+
+    .magic-item:nth-child(1) { top: 13%; left: 4%; }
+    .magic-item:nth-child(2) { top: 32%; right: 4%; animation-delay: .8s; }
+    .magic-item:nth-child(3) { top: 60%; left: 3%; animation-delay: 1.3s; }
+    .magic-item:nth-child(4) { top: 76%; right: 5%; animation-delay: 1.8s; }
+    .magic-item:nth-child(5) { top: 44%; left: 85%; animation-delay: 2.2s; }
+    .magic-item:nth-child(6) { top: 88%; left: 15%; animation-delay: 1s; }
+
+    .flying-stars {
+      position: fixed;
+      top: 18%;
+      left: -50px;
+      font-size: 32px;
+      pointer-events: none;
+      z-index: 1;
+      animation: flyAcross 18s linear infinite;
+    }
+
+    .flying-stars.second {
+      top: 53%;
+      animation-delay: 9s;
+      font-size: 23px;
+    }
+
+    .balloon-decor {
+      position: fixed;
+      bottom: 12%;
+      left: 4%;
+      font-size: 40px;
+      pointer-events: none;
+      animation: balloonFloat 4s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .balloon-decor.right {
+      left: auto;
+      right: 4%;
+      bottom: 25%;
+      animation-delay: 1.5s;
+    }
+
+    .cartoon-showcase {
+      position: relative;
+      margin: 14px auto 22px;
+      padding: 16px;
+      max-width: 440px;
+      background: linear-gradient(145deg, #fff9db, #ffe8f3, #e3f6ff);
+      border: 4px solid #2b2d42;
+      border-radius: 28px;
+      box-shadow: 0 8px 0 #2b2d42, 0 14px 24px rgba(0,0,0,.14);
+      animation: floatBounce 3.6s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .cartoon-showcase::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
+      animation: heroShine 4.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .cartoon-badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ff4757;
+      color: white;
+      font-family: 'Lilita One', 'Fredoka', sans-serif;
+      font-size: .9rem;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 2.5px solid #2b2d42;
+      box-shadow: 0 3px 0 #2b2d42;
+      margin-bottom: 10px;
+      animation: wigglePop 2.4s ease-in-out infinite;
+    }
+
+    .cartoon-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 3px solid #2b2d42;
+      background: white;
+    }
+
+    .cartoon-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .sparkle-sticker {
+      position: absolute;
+      font-size: 1.55rem;
+      pointer-events: none;
+      animation: starTwinkle 2.2s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .sparkle-1 { top: 8px; left: 10px; }
+    .sparkle-2 { top: 10px; right: 12px; animation-delay: .5s; }
+    .sparkle-3 { bottom: 10px; left: 12px; animation-delay: 1s; }
+    .sparkle-4 { bottom: 10px; right: 12px; animation-delay: 1.5s; }
+
+    .cartoon-caption {
+      margin-top: 10px;
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: .98rem;
+      color: #2b2d42;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cartoon-pill {
+      background: #ffd43b;
+      border: 2px solid #2b2d42;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: .85rem;
+      box-shadow: 0 2px 0 #2b2d42;
+    }
+
+    .hero-stickers {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 12px 0;
+      font-size: 1.8rem;
+    }
+
+    .hero-stickers span {
+      display: inline-block;
+      animation: mascotDance 2.8s ease-in-out infinite;
+    }
+
+    .hero-stickers span:nth-child(2) { animation-delay: .35s; }
+    .hero-stickers span:nth-child(3) { animation-delay: .7s; }
+    .hero-stickers span:nth-child(4) { animation-delay: 1.05s; }
+    .hero-stickers span:nth-child(5) { animation-delay: 1.4s; }
+
+    .graduation-sticker {
+      display: inline-block;
+      font-size: 35px;
+      animation: graduation 2s ease-in-out infinite;
+    }
+
+    .extra-cartoon-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .extra-cartoon {
+      background: white;
+      border: 3px solid #ffca55;
+      border-radius: 20px;
+      padding: 12px 6px;
+      box-shadow: 0 5px 0 rgba(210,150,30,.4);
+      animation: floatBounce 3.5s ease-in-out infinite;
+    }
+
+    .extra-cartoon:nth-child(2) {
+      animation-delay: 1s;
+      border-color: #8ed8f8;
+    }
+
+    .extra-cartoon .character {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .extra-cartoon p {
+      font-family: 'Fredoka', sans-serif;
+      font-size: .9rem;
+      color: #7a4a1e;
+    }
+
+    .magic-footer {
+      margin: 20px auto;
+      padding: 15px;
+      background: linear-gradient(120deg, #fff1a8, #ffd9ec, #d8f4ff);
+      border: 3px dashed #ff9eb5;
+      border-radius: 25px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.05rem;
+      text-align: center;
+      animation: rainbowPulse 3s infinite;
+    }
+
+    /* UNDIAN - CARD RINGKAS */
+    .theme-vote-section {
+      margin: 25px auto 20px;
+      padding: 20px 16px;
+      max-width: 440px;
+      background: #fff;
+      border: 3px solid #ffb6cb;
+      border-radius: 22px;
+      box-shadow: 0 6px 0 #ffd6e2;
+      text-align: center;
+      color: #2b2d42;
+    }
+
+    .vote-heading {
+      font-family: 'Lilita One', 'Fredoka', sans-serif;
+      font-size: 1.45rem;
+      margin: 0 0 6px;
+      color: #ff577f;
+    }
+
+    .vote-description {
+      font-family: 'Fredoka', sans-serif;
+      font-size: .92rem;
+      line-height: 1.5;
+      margin: 0 auto 15px;
+      color: #62566a;
+    }
+
+    .vote-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .vote-option {
+      border: 2px solid #f3c3d2;
+      border-radius: 15px;
+      background: #fff8fb;
+      padding: 12px 6px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: #2b2d42;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .vote-option:hover {
+      transform: translateY(-2px);
+      background: #fff0f5;
+    }
+
+    .vote-option.selected {
+      background: #fff0a8;
+      border-color: #ff9b42;
+      box-shadow: 0 3px 0 #ffcf40;
+    }
+
+    .vote-emoji {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .vote-submit {
+      border: 2px solid #2b2d42;
+      border-radius: 999px;
+      background: #ffcf40;
+      color: #2b2d42;
+      padding: 10px 24px;
+      font-family: 'Lilita One', 'Fredoka', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #2b2d42;
+      transition: transform .2s;
+    }
+
+    .vote-submit:hover {
+      transform: translateY(-2px);
+    }
+
+    .vote-submit:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #2b2d42;
+    }
+
+    .vote-message {
+      min-height: 20px;
+      margin: 12px 0 5px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      color: #16845a;
+    }
+
+    .vote-results {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff8fb;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .vote-results h3 {
+      font-family: 'Lilita One', 'Fredoka', sans-serif;
+      font-size: 1.1rem;
+      margin: 0 0 8px;
+      color: #ff577f;
+    }
+
+    .vote-results-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .vote-result-item {
+      background: white;
+      border: 1px solid #f3c3d2;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: .82rem;
+      color: #62566a;
+    }
+
+    .vote-total {
+      margin: 10px 0 0;
+      font-family: 'Fredoka', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      color: #72516a;
+    }
+
+    .vote-note {
+      font-size: .72rem;
+      line-height: 1.4;
+      color: #766b78;
+      margin: 10px 0 0;
+    }
+
+    @media (max-width: 360px) {
+      .vote-options {
+        gap: 7px;
+      }
+
+      .vote-option {
+        font-size: .85rem;
+        padding: 10px 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .magic-item, .flying-stars, .balloon-decor,
+      .cartoon-showcase, .hero-stickers span,
+      .extra-cartoon, .graduation-sticker,
+      .vote-character {
+        animation: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body data-page="page1">
 
-  <!-- Hiasan latar -->
+  <!-- HIASAN LATAR ASAL -->
   <div id="deco" class="deco" aria-hidden="true"></div>
 
-  <!-- Butang lagu -->
-  <button id="musicBtn" class="music-btn" onclick="toggleMusic()" aria-label="Mainkan atau henti lagu">
-    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- HIASAN KARTUN TAMBAHAN -->
+  <div class="magic-decorations" aria-hidden="true">
+    <span class="magic-item">⭐</span>
+    <span class="magic-item">🧸</span>
+    <span class="magic-item">🦄</span>
+    <span class="magic-item">🌈</span>
+    <span class="magic-item">💖</span>
+    <span class="magic-item">🐰</span>
+  </div>
+
+  <div class="flying-stars" aria-hidden="true">✨🌟</div>
+  <div class="flying-stars second" aria-hidden="true">⭐💫</div>
+  <div class="balloon-decor" aria-hidden="true">🎈</div>
+  <div class="balloon-decor right" aria-hidden="true">🎈</div>
+
+  <!-- BUTANG LAGU -->
+  <button id="musicBtn" class="music-btn"
+    onclick="toggleMusic()"
+    aria-label="Mainkan atau henti lagu">
+
+    <svg viewBox="0 0 24 24" width="26" height="26"
+      fill="none" stroke="currentColor" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round"
+      aria-hidden="true">
       <path d="M9 18V6l10-2v12"/>
       <circle cx="6.5" cy="18" r="2.8" fill="currentColor"/>
       <circle cx="16.5" cy="16" r="2.8" fill="currentColor"/>
-      <line class="slash" x1="3" y1="3" x2="21" y2="21" stroke="#E64A4A" stroke-width="2.6"/>
+      <line class="slash" x1="3" y1="3" x2="21" y2="21"
+        stroke="#E64A4A" stroke-width="2.6"/>
     </svg>
   </button>
 
-  <!-- PAGE 1: Halaman Sampul -->
-  <section id="page1" class="page active" onclick="goToPage2()">
+  <!-- HALAMAN UTAMA -->
+  <section id="page1" class="page active">
 
     <div class="hero">
 
@@ -39,18 +487,80 @@
         <span class="rainbow">Konvokesyen</span>
       </h1>
 
+      <!-- LOGO TASKA -->
       <div class="logo-wrap">
-        <img class="logo-img" src="assets/logo-taska.jpg" alt="Logo Taska Mama Fyda" onerror="logoFallback(this)">
+        <img class="logo-img"
+          src="assets/logo-taska.jpg"
+          alt="Logo Taska Mama Fyda"
+          onerror="logoFallback(this)">
       </div>
 
       <div class="ribbon">
         <span>Sesi 2026</span>
       </div>
 
+      <!-- PANTUN -->
+      <div class="pantun-box">
+        <p class="pantun">
+          Bunga tulip cantik berseri,<br>
+          Warnanya indah menarik hati,<br>
+          Hari konvo penuh memori,<br>
+          Abadikan senyuman si kecil hari ini!
+        </p>
+      </div>
+
+      <!-- STIKER SUPERHERO -->
+      <div class="hero-stickers" aria-hidden="true">
+        <span>⚡</span>
+        <span>🌟</span>
+        <span>🎈</span>
+        <span>🦸‍♂️</span>
+        <span>🎓</span>
+      </div>
+
+      <!-- KARTUN UTAMA -->
+      <div class="cartoon-showcase">
+
+        <div class="cartoon-badge-top">
+          <span>✨</span>
+          <span>SUPER CUTE TMF SQUAD!</span>
+          <span>⚡</span>
+        </div>
+
+        <div class="cartoon-frame">
+
+          <span class="sparkle-sticker sparkle-1">⭐</span>
+          <span class="sparkle-sticker sparkle-2">💖</span>
+          <span class="sparkle-sticker sparkle-3">⚡</span>
+          <span class="sparkle-sticker sparkle-4">🌈</span>
+
+          <img class="cartoon-img"
+            src="assets/i-love-teacher-tmf.jpg.jpeg"
+            alt="Kartun anak-anak Taska Mama Fyda bersama cikgu"
+            onerror="this.onerror=null; this.src='assets/logo-taska.jpg';">
+
+        </div>
+
+        <p class="cartoon-caption">
+          <span>Sayang Teacher TMF Selalu!</span>
+          <span class="cartoon-pill">Betul! Betul! Betul! 🎉</span>
+        </p>
+
+      </div>
+
+      <div class="magic-footer">
+        🌈 ✨ You Are Our Little Superstars! ✨ 🌈
+        <br>
+        <span class="graduation-sticker">🎓</span>
+        <br>
+        Teruskan bersinar, anak-anak TMF!
+      </div>
+
       <!-- TENTATIF MAJLIS -->
-      <div class="event-section" onclick="event.stopPropagation()">
+      <div class="event-section">
 
         <div class="event-heading">
+
           <span class="event-mascot">🐻</span>
 
           <div>
@@ -59,6 +569,7 @@
           </div>
 
           <span class="event-mascot">🌈</span>
+
         </div>
 
         <div class="event-info">
@@ -204,16 +715,77 @@
 
         </div>
 
+        <!-- UNDIAN TEMA KARTUN - CARD BERASINGAN -->
+        <div class="theme-vote-section">
+
+          <h2 class="vote-heading">🎭 Undian Tema Kartun</h2>
+
+          <p class="vote-description">
+            Pilih tema kostum kegemaran anda! 💖
+          </p>
+
+          <div class="vote-options" id="voteOptions">
+
+            <button type="button" class="vote-option" data-theme="Princess">
+              <span class="vote-emoji">👸</span>
+              Princess
+            </button>
+
+            <button type="button" class="vote-option" data-theme="Superhero">
+              <span class="vote-emoji">🦸</span>
+              Superhero
+            </button>
+
+            <button type="button" class="vote-option" data-theme="Animal Cartoon">
+              <span class="vote-emoji">🐻</span>
+              Animal Cartoon
+            </button>
+
+            <button type="button" class="vote-option" data-theme="Other">
+              <span class="vote-emoji">🎀</span>
+              Other
+            </button>
+
+          </div>
+
+          <button type="button" class="vote-submit" id="voteSubmit">
+            Hantar Undian
+          </button>
+
+          <p class="vote-message" id="voteMessage" aria-live="polite">
+            Pilih satu tema dahulu.
+          </p>
+
+          <div class="vote-results">
+            <h3>🏆 Keputusan Undian</h3>
+
+            <div class="vote-results-list" id="voteResultsList">
+            </div>
+
+            <p class="vote-total" id="voteTotal">
+              Jumlah undian: 0
+            </p>
+          </div>
+
+          <p class="vote-note">
+            Anda boleh menukar pilihan undian. Undian disimpan pada browser ini sahaja.
+          </p>
+
+        </div>
+        <!-- TAMAT UNDIAN -->
+
         <div class="event-footer">
           🎉 Jumpa anda di sana! 🎉
         </div>
 
       </div>
 
-      <!-- BUTANG MULA -->
-      <button class="btn-big" onclick="event.stopPropagation(); goToPage2()">
-        🎓 Sentuh untuk mula
-      </button>
+      <!-- PENUTUP -->
+      <div class="magic-footer">
+        💖 Thank You For Being Part Of Our Journey! 💖
+        <br>
+        🌟 TMF Little Stars Forever! 🌟
+      </div>
 
       <p class="hint">
         🎵 Tekan butang ♪ di penjuru untuk lagu ceria
@@ -223,139 +795,161 @@
 
   </section>
 
-  <!-- PAGE 2: Menu Utama & Nama Murid -->
-  <section id="page2" class="page">
-
-    <div class="card menu">
-
-      <div class="logo-wrap sm">
-        <img class="logo-img" src="assets/logo-taska.jpg" alt="Logo Taska Mama Fyda" onerror="logoFallback(this)">
-      </div>
-
-      <h2 class="wordmark">
-        <span class="w-g">Taska</span>
-        <span class="w-r">Mama</span>
-        <span class="w-b">Fyda</span>
-      </h2>
-
-      <div class="pantun-box">
-        <p class="pantun">
-          Bunga tulip cantik berseri,<br>
-          Warnanya indah menarik hati,<br>
-          Hari konvo penuh memori,<br>
-          Abadikan senyuman si kecil hari ini!
-        </p>
-      </div>
-
-      <div class="input-group">
-        <label for="studentName">Nama Murid / Ibu Bapa</label>
-        <input type="text" id="studentName" placeholder="Taip nama di sini" maxlength="30" autocomplete="off">
-      </div>
-
-      <button class="btn-primary" onclick="goToPage3()">
-        📷 AMBIL GAMBAR
-      </button>
-
-      <button class="btn-secondary" onclick="goToPage4()">
-        🖼️ LIHAT ALBUM KENANGAN
-      </button>
-
-    </div>
-
-  </section>
-
-  <!-- PAGE 3: Kamera & Bingkai Comel -->
-  <section id="page3" class="page">
-
-    <div class="camera-screen">
-
-      <div class="top-bar">
-
-        <button class="icon-btn" onclick="goToPage2()" aria-label="Tutup">
-          ✕
-        </button>
-
-        <h3 class="top-title">Konvo Mama Fyda</h3>
-
-        <button class="icon-btn" onclick="flipCamera()" aria-label="Pusing kamera">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 12a8 8 0 1 1-2.6-5.9"/>
-            <path d="M20 4v5h-5"/>
-          </svg>
-        </button>
-
-      </div>
-
-      <div class="camera-wrapper">
-        <video id="webcam" autoplay playsinline muted></video>
-        <canvas id="frameCanvas" class="frame-overlay" width="1080" height="1440"></canvas>
-        <canvas id="photoCanvas" style="display:none;"></canvas>
-      </div>
-
-      <!-- Pilihan Bingkai -->
-      <div class="frame-options">
-        <button data-frame="convo" onclick="changeFrame('convo')">🎓 Graduasi</button>
-        <button data-frame="rainbow" onclick="changeFrame('rainbow')">🌈 Pelangi</button>
-        <button data-frame="star" onclick="changeFrame('star')">⭐ Bintang</button>
-        <button data-frame="asli" onclick="changeFrame('asli')">Asli</button>
-      </div>
-
-      <div class="shutter-container">
-        <button id="snapBtn" class="shutter-btn" aria-label="Ambil gambar">
-          <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/>
-            <circle cx="12" cy="13" r="3.5"/>
-          </svg>
-        </button>
-      </div>
-
-      <p id="uploadStatus" class="upload-status"></p>
-
-    </div>
-
-  </section>
-
-  <!-- PAGE 4: Album Kenangan -->
-  <section id="page4" class="page">
-
-    <div class="album-screen">
-
-      <div class="top-bar album-head">
-
-        <button class="icon-btn" onclick="goToPage2()" aria-label="Kembali">
-          ‹
-        </button>
-
-        <div>
-          <h2 class="album-title">Album Kenangan</h2>
-          <p class="sub-title">Momen Indah Konvokesyen</p>
-        </div>
-
-        <button class="icon-btn" onclick="loadAlbum()" aria-label="Muat semula">
-          ↻
-        </button>
-
-      </div>
-
-      <div id="albumContainer" class="album-container"></div>
-
-      <div class="album-footer">
-        <button class="btn-primary" onclick="goToPage3()">
-          📷 AMBIL GAMBAR LAGI
-        </button>
-      </div>
-
-    </div>
-
-  </section>
-
-  <div id="flash"></div>
   <div id="toast" role="status"></div>
 
-  <!-- Lagu Latar Belakang Ceria -->
-  <audio id="bgMusic" src="assets/audio/song.mp3" loop></audio>
+  <!-- LAGU LATAR -->
+  <audio
+    id="bgMusic"
+    src="assets/audio/song.mp3"
+    loop
+    preload="auto">
+  </audio>
 
+  <!-- JAVASCRIPT ASAL -->
   <script src="app.js"></script>
+
+  <!-- JAVASCRIPT UNDIAN -->
+  <script>
+    const voteThemes = [
+      "Princess",
+      "Superhero",
+      "Animal Cartoon",
+      "Other"
+    ];
+
+    const voteEmojis = {
+      "Princess": "👸",
+      "Superhero": "🦸",
+      "Animal Cartoon": "🐻",
+      "Other": "🎀"
+    };
+
+    const voteStorageKey = "tmf_convo_2026_votes";
+    const userVoteStorageKey = "tmf_convo_2026_user_vote";
+
+    let selectedTheme = null;
+
+    const voteOptions = document.getElementById("voteOptions");
+    const voteSubmit = document.getElementById("voteSubmit");
+    const voteMessage = document.getElementById("voteMessage");
+    const voteResultsList = document.getElementById("voteResultsList");
+    const voteTotal = document.getElementById("voteTotal");
+
+    function getVotes() {
+      try {
+        const savedVotes = JSON.parse(
+          localStorage.getItem(voteStorageKey)
+        );
+
+        return savedVotes && typeof savedVotes === "object"
+          ? savedVotes
+          : {};
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function saveVotes(votes) {
+      localStorage.setItem(
+        voteStorageKey,
+        JSON.stringify(votes)
+      );
+    }
+
+    function getUserVote() {
+      return localStorage.getItem(userVoteStorageKey);
+    }
+
+    function selectTheme(theme) {
+      selectedTheme = theme;
+
+      document.querySelectorAll(".vote-option").forEach(button => {
+        button.classList.toggle(
+          "selected",
+          button.dataset.theme === theme
+        );
+      });
+
+      voteMessage.textContent = "Pilihan anda: " + theme + " 💖";
+      voteMessage.style.color = "#16845a";
+    }
+
+    function renderVoteResults() {
+      const votes = getVotes();
+      let total = 0;
+
+      voteThemes.forEach(theme => {
+        total += Number(votes[theme]) || 0;
+      });
+
+      voteResultsList.innerHTML = "";
+
+      voteThemes.forEach(theme => {
+        const count = Number(votes[theme]) || 0;
+
+        const item = document.createElement("span");
+        item.className = "vote-result-item";
+        item.textContent = voteEmojis[theme] + " " + theme + ": " + count;
+
+        voteResultsList.appendChild(item);
+      });
+
+      voteTotal.textContent = "Jumlah undian: " + total;
+    }
+
+    voteOptions.addEventListener("click", function(event) {
+      const button = event.target.closest(".vote-option");
+
+      if (!button) return;
+
+      selectTheme(button.dataset.theme);
+    });
+
+    voteSubmit.addEventListener("click", function() {
+      if (!selectedTheme) {
+        voteMessage.textContent = "Sila pilih satu tema dahulu! 😊";
+        voteMessage.style.color = "#e64a4a";
+        return;
+      }
+
+      const votes = getVotes();
+      const previousVote = getUserVote();
+
+      if (previousVote && voteThemes.includes(previousVote)) {
+        votes[previousVote] = Math.max(
+          0,
+          (Number(votes[previousVote]) || 0) - 1
+        );
+      }
+
+      votes[selectedTheme] =
+        (Number(votes[selectedTheme]) || 0) + 1;
+
+      saveVotes(votes);
+
+      localStorage.setItem(
+        userVoteStorageKey,
+        selectedTheme
+      );
+
+      voteMessage.textContent =
+        "Terima kasih! Undian anda berjaya dihantar! 🎉";
+
+      voteMessage.style.color = "#16845a";
+
+      renderVoteResults();
+    });
+
+    // Paparkan pilihan terdahulu jika ada
+    const previousVote = getUserVote();
+
+    if (previousVote && voteThemes.includes(previousVote)) {
+      selectTheme(previousVote);
+    }
+
+    // Paparkan keputusan apabila halaman dibuka
+    renderVoteResults();
+  </script>
 
 </body>
 </html>
